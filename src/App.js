@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import { db } from "./firebase-config";
 import {
@@ -47,9 +47,9 @@ function App() {
     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
 
   return (
     <div className="App">
