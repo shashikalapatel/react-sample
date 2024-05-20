@@ -11,6 +11,8 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 function App() {
   const [newName, setNewName] = useState("");
@@ -18,6 +20,12 @@ function App() {
 
   const [users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, "users");
+  const cardData = [
+    { title: "Card 1", text: "This is card 1" },
+    { title: "Card 2", text: "This is card 2" },
+    { title: "Card 3", text: "This is card 3" },
+    // Add more card data here
+  ];
 
   const createUser = async () => {
     await addDoc(usersCollectionRef, {
@@ -80,6 +88,18 @@ function App() {
           </div>
         ))}
       </div>
+      {/* <div className="d-flex flex-wrap">
+        {cardData.map((data, index) => (
+          <Card key={index} style={{ width: "18rem", margin: "1rem" }}>
+            <Card.Img variant="top" src="https://via.placeholder.com/150" />
+            <Card.Body>
+              <Card.Title>{data.title}</Card.Title>
+              <Card.Text>{data.text}</Card.Text>
+              <Button variant="primary">Go somewhere</Button>
+            </Card.Body>
+          </Card>
+        ))}
+      </div> */}
     </div>
   );
   // return (
