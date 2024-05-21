@@ -48,6 +48,13 @@ const Home = () => {
 
   return (
     <div>
+      <a
+        href={`https://wa.me/${9302795777}?text=${encodeURIComponent("hello")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Send WhatsApp Message
+      </a>
       <div className="FormHolder">
         <input
           type="text"
