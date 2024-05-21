@@ -8,6 +8,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { Button, Card, Container, Row, Col, Carousel } from "react-bootstrap";
 
 const Home = () => {
   const [newName, setNewName] = useState("");
@@ -64,18 +65,70 @@ const Home = () => {
         />
         <button onClick={createUser}>Create User</button>
       </div>
-      <div className="user-cards">
-        {users.map((user) => (
-          <div key={user.id} className="user-card">
-            <h1>Name: {user.name}</h1>
-            <h1>Marks: {user.marks}</h1>
-            <button onClick={() => updateUser(user.id, user.marks)}>
-              Increase Marks
-            </button>
-            <button onClick={() => deleteUser(user.id)}>Delete User</button>
-          </div>
-        ))}
-      </div>
+      <Carousel interval={null}>
+        <Carousel.Item>
+          <img
+            className="d-block"
+            src="/favicon.ico"
+            alt="First slide"
+            style={{ height: "400px", width: "100%" }}
+          />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block"
+            src="/favicon.ico"
+            alt="Second slide"
+            style={{ height: "400px", width: "100%" }}
+          />
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block"
+            src="/favicon.ico"
+            alt="Third slide"
+            style={{ height: "400px", width: "100%" }}
+          />
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+      <Container>
+        <Row>
+          {users.map((user, index) => (
+            <Col sm={12} md={6} lg={4} xl={3} key={index}>
+              <Card style={{ width: "15rem", margin: "0.5rem" }}>
+                <Card.Img variant="top" src="/favicon.ico" />
+                <Card.Body>
+                  <Card.Title>{user.name}</Card.Title>
+                  <Card.Text>{user.marks}</Card.Text>
+                  <Button
+                    variant="primary"
+                    onClick={() => updateUser(user.id, user.marks)}
+                  >
+                    Increase Marks
+                  </Button>
+                  <Button variant="primary" onClick={() => deleteUser(user.id)}>
+                    Delete User
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </div>
   );
 };
